@@ -18,8 +18,6 @@ def add_pose(graph, initial_estimate):
     
     odometry_delta = gtsam.Pose2(dx, dy, dtheta)
 
-    # Add the BetweenFactor to the graph
-    # This connects the previous pose X(3) to the new pose X(4)
     graph.add(gtsam.BetweenFactorPose2(X(3), X(4), odometry_delta, ODOMETRY_NOISE))
 
     initial_estimate.insert(X(4), gtsam.Pose2(5.4, 1.4, 1.57))
